@@ -1,7 +1,13 @@
 const _ = require('lodash')
+
+/**
+ *
+ * @type {RetoPlusOne.Experience[]}
+ */
 module.exports = [
   {
     id: 1,
+    stripeId: null,
     host: {
       id: 1,
       profile_pic: 'http://',
@@ -17,7 +23,7 @@ module.exports = [
     // To be shown on the detail
     full_description: _.times('Loren ipsum', 40),
     pic_thumbnail_url: 'http://',
-    pic_url: 'http://',
+    pic_url: 'https://media.vandal.net/i/1280x720/2-2021/202121123140_1.jpg.webp',
     // For the carousel
     pics: [{
       url: 'http://',
@@ -35,6 +41,7 @@ module.exports = [
     date_start: '2020-10-10 10:10',
     date_end: '2021-10-10 10:10',
     date_at: '2021-12-10 10:10',
+    currency: 'eur',
     price: 1234 // 12,34
   }
 ]

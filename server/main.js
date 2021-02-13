@@ -1,60 +1,73 @@
-process.chdir(__dirname)
-
-const express = require('express')
-const bodyParser = require('body-parser')
-const morgan = require('morgan')
-const http = require('http')
-const logger = require('./utils/logger')
+const experiences = require('./initial-data/experiences')
+const users = require('./initial-data/users')
 const constants = require('./constants')
-const db = require('./database')
-const app = express()
+const stripe = require('./stripe')
 
-app.use(morgan('combined'))
+const _ = require('lodash')
+const Keyv = require('keyv')
 
-app.use(bodyParser.json())
-app.use(bodyParser.urlencoded({ extended: false }))
+const experiencesDB = new Keyv()
+const usersDb = new Keyv()
+const mainDB = new Keyv()
 
-const server = http.createServer(app)
 
-server.listen(constants.PORT)
-
-server.on('listening', async function () {
-  try {
-    await db.setup()
-    logger.info('Server running')
-  } catch (e) {
-    logger.error(e)
+async function setup () {
+  for (const experience of experiences) {
+    const stripeProduct = await stripe.createExperience(experience)
+    experience.stripeId = stripeProduct.id
+    await experiencesDB.set(experience.id, experience)
   }
-})
 
-app.post('/api/experiencies', async function (req, res, next) {
-  try {
-    const userId = res.body.userId
-    const experiences = await db.getExperiencies(userId)
-    res.json(experiences)
-  } catch (e) {
-    next(e)
-  }
-})
-app.post('/api/experience', async function (req, res, next) {
-  try {
-    const userId = res.body.userId
-    const id = res.body.id
-    const experience = await db.getExperience(userId, id)
-    res.json(experience)
-  } catch (e) {
-    next(e)
-  }
-})
+  const experiencesIds = _.map(experiences, 'id')
+  await mainDB.set(constants.experiencesKey, experiencesIds)
 
-app.post('/api/buy', async function (req, res, next) {
-  try {
-    const userId = res.body.userId
-    const id = res.body.id
-    const experience = await db.buyExperience(userId, id)
-    res.json(experience)
-  } catch (e) {
-    next(e)
+  for (const user of users) {
+    await usersDb.set(user.id, user)
   }
-})
+}
+
+async function getExperiencies (userId) {
+  // TODO probably paginate
+  const ids = await mainDB.get(constants.experiencesKey)
+
+  const user = await usersDb.get(userId)
+
+  const boughtExperiences = _.keyBy(user.bought_experiences, 'id')
+  const experiences = []
+  // If redis. Use mget
+  for (const id of ids) {
+    const experience = await experiencesDB.get(id)
+    if (boughtExperiences[experience.id]) {
+      experience.is_bought = true
+    }
+    experiences.push(experience)
+  }
+
+  return experiences
+}
+
+async function getExperience (userId, id) {
+  const user = await usersDb.get(userId)
+  const boughtExperiences = _.keyBy(user.bought_experiences, 'id')
+  const experience = await experiencesDB.get(id)
+  experience.is_bought = boughtExperiences[id]
+  return experience
+}
+
+async function buyExperience (userId, id) {
+  const experience = await getExperience(userId, id)
+  if (experience.is_bought) {
+    const err = new Error('Experience already bought')
+    err.http_code = 400
+    throw err
+  }
+}
+
+
+module.exports = {
+  setup,
+  getExperiencies,
+  getExperience,
+  buyExperience
+}
 
