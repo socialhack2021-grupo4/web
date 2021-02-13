@@ -16,13 +16,10 @@
           <input
             :placeholder="$t('search.placeholder')"
             type="search"
-            name="q"
             class="transition ring ring-gray-50 focus:ring-pink-100 py-2 text-sm text-white bg-gray-50 rounded-md pl-10 focus:outline-none focus:bg-white focus:text-gray-900"
             autocomplete="off"
           />
         </div>
-
-        <!-- <input class="border border-red-500 focus:border-blue-500" type="text" /> -->
       </div>
 
       <div class="flex justify-end">
