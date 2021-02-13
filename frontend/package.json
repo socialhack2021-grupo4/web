@@ -6,10 +6,20 @@
     "build": "vite build"
   },
   "dependencies": {
-    "vue": "^3.0.4"
+    "@fortawesome/fontawesome-svg-core": "^1.2.34",
+    "@fortawesome/free-solid-svg-icons": "^5.15.2",
+    "@fortawesome/vue-fontawesome": "^3.0.0-3",
+    "vue": "^3.0.4",
+    "vue-i18n": "^9.0.0-rc.6",
+    "vue-router": "4"
   },
   "devDependencies": {
-    "vite": "^1.0.0-rc.13",
-    "@vue/compiler-sfc": "^3.0.4"
+    "@tailwindcss/postcss7-compat": "^2.0.3",
+    "@vue/compiler-sfc": "^3.0.4",
+    "autoprefixer": "^9",
+    "postcss": "^7",
+    "prettier": "^2.2.1",
+    "tailwindcss": "npm:@tailwindcss/postcss7-compat",
+    "vite": "^1.0.0-rc.13"
   }
 }
