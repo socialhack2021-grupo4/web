@@ -1,5 +1,8 @@
 <template>
-  <div class="box-border w-1/4 pt-6 px-8 pb-16 flex-shrink-0 scroll-snap-align-start">
+  <router-link
+    class="block box-border w-1/4 pt-6 px-8 pb-16 flex-shrink-0 scroll-snap-align-start"
+    :to="experiencePage"
+  >
     <article
       class="relative transition transform shadow box-border w-full h-full rounded-lg cursor-pointer hover:shadow-2xl hover:-translate-y-2 ring-pink-200"
       :class="{
@@ -42,13 +45,6 @@
           })
         }}
       </p>
-      <!-- <p class="absolute top-2 -right-4 bg-pink-400 text-white px-4 py-2">
-        {{
-          t('experience.featured.label', {
-            formattedPrice: n(experience.priceInCents / 100, 'currency'),
-          })
-        }}
-      </p> -->
 
       <div class="py-2 px-4">
         <h3 class="text-lg font-semibold">{{ experience.host.name }}</h3>
@@ -64,7 +60,7 @@
         </p>
       </div>
     </article>
-  </div>
+  </router-link>
 </template>
 
 <script lang="ts">
@@ -85,6 +81,10 @@ export default defineComponent({
   setup(props) {
     const { t, n, d } = useI18n();
 
+    const experiencePage = computed(() => ({
+      name: 'experience',
+      params: { id: props.experience.id },
+    }));
     const isEndingSoon = computed(
       () => props.isEndingSoonHighlightEnabled && isSoon(props.experience.dateEnd),
     );
@@ -96,6 +96,7 @@ export default defineComponent({
       t,
       n,
       d,
+      experiencePage,
       isEndingSoon,
       isFeatured,
     };

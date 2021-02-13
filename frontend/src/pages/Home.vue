@@ -1,6 +1,5 @@
 <template>
   <div class="bg-white">
-    <NavBar />
     <FilterBar />
     <template v-for="singleCategory of categories" :key="singleCategory.id">
       <CategorySection
@@ -19,14 +18,12 @@ import { defineComponent, computed } from 'vue';
 import { useStore } from 'vuex';
 import { useI18n } from 'vue-i18n';
 
-import NavBar from '../components/NavBar.vue';
 import FilterBar from '../components/FilterBar.vue';
 import CategorySection from '../components/CategorySection.vue';
 import { key } from '../store';
 
 export default defineComponent({
   components: {
-    NavBar,
     FilterBar,
     CategorySection,
   },

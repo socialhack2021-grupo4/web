@@ -24,6 +24,11 @@ export const messages = {
     experience: {
       alreadyBought: '¡Ya participas en el sorteo!',
       dateEnd: 'El sorteo será el {formattedDate}.',
+      participantsCount: '{count} participantes',
+      buyToHelp: 'Participando ayudarás donando {formattedPrice} a',
+      buy: {
+        cta: '¡Participa!',
+      },
       endingSoon: {
         label: '¡Termina pronto!',
       },

@@ -1,7 +1,7 @@
 <template>
   <nav class="flex flex-row justify-between items-center max-w-7xl mx-auto px-4 py-6">
     <div class="flex justify-start">
-      <router-link to="/">PROJECT_NAME</router-link>
+      <router-link :to="{ name: 'home' }">PROJECT_NAME</router-link>
     </div>
 
     <div class="flex justify-start">
