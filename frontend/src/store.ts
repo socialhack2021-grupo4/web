@@ -11,6 +11,7 @@ import {
   getHostFromShallowHost,
   getNgoFromShallowNgo,
   getShallowExperienceFromExperience,
+  isSoon,
 } from './models';
 import { groupBy } from './utils/collection';
 
@@ -170,6 +171,45 @@ const store = createStore<State>({
             }),
         )
         .sort((lhs, rhs) => lhs.experiencesCount - rhs.experiencesCount);
+    },
+    isSomeFilterActive(state) {
+      return (
+        Object.values(state.activeFilters.hosts).some((isFilterActive) => isFilterActive) ||
+        Object.values(state.activeFilters.ngos).some((isFilterActive) => isFilterActive)
+      );
+    },
+    experiencesForYou(state, getters) {
+      return Object.values(getters.experiencesById)
+        .filter(({ isStarred }) => isStarred)
+        .filter(
+          ({ host, ngo }) =>
+            !getters.isSomeFilterActive ||
+            state.activeFilters.hosts[host.id] ||
+            state.activeFilters.ngos[ngo.id],
+        )
+        .sort((lhs, rhs) => lhs.priority - rhs.priority);
+    },
+    experiencesEndingSoon(state, getters) {
+      console.log(getters.isSomeFilterActive);
+      return Object.values(getters.experiencesById)
+        .filter(({ dateEnd }) => isSoon(dateEnd))
+        .filter(
+          ({ host, ngo }) =>
+            !getters.isSomeFilterActive ||
+            state.activeFilters.hosts[host.id] ||
+            state.activeFilters.ngos[ngo.id],
+        )
+        .sort((lhs, rhs) => lhs.priority - rhs.priority);
+    },
+    popularExperiences(state, getters) {
+      return Object.values(getters.experiencesById)
+        .filter(
+          ({ host, ngo }) =>
+            !getters.isSomeFilterActive ||
+            state.activeFilters.hosts[host.id] ||
+            state.activeFilters.ngos[ngo.id],
+        )
+        .sort((lhs, rhs) => lhs.priority - rhs.priority);
     },
   },
 });

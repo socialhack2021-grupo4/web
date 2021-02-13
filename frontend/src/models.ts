@@ -131,3 +131,5 @@ export const getExperienceFromShallowExperience = ({
   host: shallowHost,
   ngo: shallowNgo,
 });
+
+export const isSoon = (date: Date) => date.getTime() - Date.now() < 24 * 60 * 60 * 1000;
