@@ -20,10 +20,12 @@ module.exports = [
     pic_url: 'http://',
     // For the carousel
     pics: [{
-      url: 'http://'
+      url: 'http://',
+      is_video: true
       },
       {
-      url: 'http://'
+      url: 'http://',
+        is_video: false
       }
     ],
     is_bought: null, // Depends on user
