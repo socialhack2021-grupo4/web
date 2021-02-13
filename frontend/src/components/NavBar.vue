@@ -16,7 +16,7 @@
           <input
             :placeholder="$t('search.placeholder')"
             type="search"
-            class="transition ring ring-gray-50 focus:ring-pink-100 py-2 text-sm text-white bg-gray-50 rounded-md pl-10 focus:outline-none focus:bg-white focus:text-gray-900"
+            class="transition ring ring-gray-50 focus:ring-pink-100 py-2 text-sm text-white bg-gray-50 rounded-md pl-10 w-96 focus:outline-none focus:bg-white focus:text-gray-900"
             autocomplete="off"
           />
         </div>

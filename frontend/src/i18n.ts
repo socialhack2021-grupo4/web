@@ -6,6 +6,9 @@ export default {
     search: {
       placeholder: 'Buscar…',
     },
-    filter: { actions: { removeAllFilters: 'Inicio' } },
+    filter: {
+      noActiveFilters: 'Inicio',
+      actions: { removeAllFilters: 'Inicio' },
+    },
   },
 };

@@ -1,25 +1,48 @@
 <template>
   <div
     class="group relative transition rounded-full bg-gray-50 hover:bg-pink-100 px-3 py-2 cursor-pointer hover:text-pink-400"
-    :class="isActive ? 'text-pink-400 bg-pink-100' : null"
+    :class="{
+      'text-pink-400': isActive,
+      'bg-pink-100': isActive,
+      'hover:bg-pink-200': isActive,
+    }"
+    @click="$emit('click', $event)"
   >
     <FontAwesomeIcon v-if="prefixIcon" class="" :icon="prefixIcon" />
 
     {{ label }}
 
     <span
-      v-if="isCountSpanDisplayed"
-      class="transition-opacity text-gray-400 group-hover:text-gray-500 ml-1 opacity-100 min-w-4 inline-flex justify-end"
-      :class="[hoverIcon ? 'group-hover:opacity-0' : null, isActive ? 'opacity-0' : null]"
+      v-if="hasCountSpan"
+      class="transition-opacity text-gray-400 group-hover:text-gray-500 ml-1 min-w-4 inline-flex justify-end"
+      :class="{
+        'group-hover:opacity-0': !isActive,
+        'opacity-0': isActive,
+        'opacity-100': !isActive,
+      }"
     >
       {{ count }}
     </span>
-    <FontAwesomeIcon
-      v-if="hoverIcon"
-      class="absolute transition-opacity top-1/2 -mt-2 right-3 opacity-0 group-hover:opacity-100"
-      :icon="hoverIcon"
-      :class="[isActive ? 'opacity-100' : null]"
-    />
+
+    <template v-if="isSuffixIconDisplayed">
+      <FontAwesomeIcon
+        class="absolute transition-opacity top-1/2 -mt-2 right-3"
+        :icon="faFilter"
+        :class="{
+          'opacity-0': !isActive,
+          'opacity-100': isActive,
+          'group-hover:opacity-0': isActive,
+          'group-hover:opacity-100': !isActive,
+        }"
+      />
+      <FontAwesomeIcon
+        class="absolute transition-opacity top-1/2 -mt-2 right-3 opacity-0"
+        :icon="faTimesCircle"
+        :class="{
+          'group-hover:opacity-100': isActive,
+        }"
+      />
+    </template>
   </div>
 </template>
 
@@ -27,9 +50,13 @@
 import { defineComponent, PropType } from 'vue';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import { IconDefinition } from '@fortawesome/fontawesome-common-types';
+import { faFilter, faTimesCircle } from '@fortawesome/free-solid-svg-icons';
 
 export default defineComponent({
   components: { FontAwesomeIcon },
+  emits: {
+    click: (payload: MouseEvent) => true,
+  },
   props: {
     label: {
       type: String,
@@ -38,12 +65,18 @@ export default defineComponent({
     count: Number,
     isActive: Boolean,
     prefixIcon: Object as PropType<IconDefinition>,
-    hoverIcon: Object as PropType<IconDefinition>,
+    isSuffixIconDisplayed: Boolean,
   },
   computed: {
-    isCountSpanDisplayed(): boolean {
-      return !!(this.hoverIcon || this.count !== undefined);
+    hasCountSpan(): boolean {
+      return !!(this.isActive || this.count !== undefined);
     },
+  },
+  setup() {
+    return {
+      faFilter,
+      faTimesCircle,
+    };
   },
 });
 </script>
