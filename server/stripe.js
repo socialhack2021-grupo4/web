@@ -1,6 +1,7 @@
 module.exports = {
   createExperience,
-  requestBuy
+  requestBuy,
+  validateBuy
 }
 
 const constants = require('./constants')
@@ -47,13 +48,20 @@ async function requestBuy (experience) {
   return session
 }
 
+/**
+ *
+ * @param rawEvent
+ * @param signature
+ * @returns {Promise<null|Stripe.Session>}
+ */
 async function validateBuy (rawEvent, signature) {
   const event = await stripe.webhooks.constructEvent(rawEvent, signature, constants.stripeWebhookKey)
-  console.log(event)
+  console.log('event', event)
   if (event.type === 'checkout.session.completed') {
-    const session = event.data.object;
-
+    const session = event.data.object
+    console.log(session)
     // Fulfill the purchase...
-    handleCheckoutSession(session);
+    // handleCheckoutSession(session)
+    return session
   }
 }

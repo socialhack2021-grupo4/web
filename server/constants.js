@@ -6,5 +6,5 @@ module.exports = {
   stripeApiKey: process.env.STRIPE_API_KEY,
   stripeWebhookKey: process.env.STRIPE_WEBHOOK_SECRET,
   url: `https://localhost:${PORT}`,
-  frontendUrl: `https://localhost:${PORT}`
+  frontendUrl: 'https://localhost:3000'
 }

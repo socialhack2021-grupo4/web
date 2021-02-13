@@ -9,6 +9,7 @@ const Keyv = require('keyv')
 const experiencesDB = new Keyv()
 const usersDb = new Keyv()
 const mainDB = new Keyv()
+const sessionsDB = new Keyv()
 
 async function setup () {
   for (const experience of experiences) {
@@ -68,27 +69,34 @@ async function startBuy (userId, id) {
   }
 
   const stripeSession = await stripe.requestBuy(experience)
+  sessionsDB.set(stripeSession.id, {
+    userId,
+    experienceId: id
+  })
   return stripeSession
 }
 
-async function buyExperience (userId, id) {
-  const experience = await getExperience(userId, id)
-  if (experience.is_bought) {
-    const err = new Error('Experience already bought')
-    err.http_code = 400
-    throw err
+async function validateBuy (event, signature) {
+  const session = await stripe.validateBuy(event, signature)
+  if (!session) {
+    // We receive other events
+    return
   }
-}
-
-async function confirmBuy (event, signature) {
-  stripe.confirmBuy
+  const sessionInfo = await sessionsDB.get(session.id)
+  const experience = await experiencesDB.get(sessionInfo.experienceId)
+  const user = await usersDb.get(sessionInfo.userId)
+  user.bought_experiences.push({
+    id: experience.id
+  })
+  await usersDb.set(sessionInfo.userId, user)
+  experience.n_participants++
+  await experiencesDB.set(experience.id, experience)
 }
 
 module.exports = {
   setup,
   getExperiencies,
   getExperience,
-  buyExperience,
-  startBuy
+  startBuy,
+  validateBuy
 }
-

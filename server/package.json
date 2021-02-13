@@ -4,13 +4,16 @@
   "main": "index.js",
   "scripts": {
     "start": "node app.js",
-    "watch": "nodemon app.js"
+    "watch": "nodemon app.js",
+    "webhooks": "source test.env && ./../stripe listen --forward-to localhost:3001/webhook --api-key $STRIPE_API_KEY"
   },
   "license": "MIT",
   "dependencies": {
     "@types/stripe": "^8.0.417",
     "body-parser": "^1.19.0",
     "cors": "^2.8.5",
+    "dotenv": "^8.2.0",
+    "dotenv-cli": "^4.0.0",
     "express": "^4.17.1",
     "keyv": "^4.0.3",
     "lodash": "^4.17.20",

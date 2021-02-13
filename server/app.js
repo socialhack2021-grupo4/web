@@ -13,7 +13,14 @@ const cors = require('cors')
 app.use(morgan('combined'))
 app.use(cors())
 
-app.use(bodyParser.json())
+app.use(bodyParser.json({
+  verify: function (req, res, buf) {
+    var url = req.originalUrl
+    if (url.startsWith('/webhook')) {
+      req.rawBody = buf.toString()
+    }
+  }
+}))
 app.use(bodyParser.urlencoded({ extended: false }))
 
 const server = http.createServer(app)
@@ -62,12 +69,11 @@ app.post('/api/start-buy', async function (req, res, next) {
 })
 app.post('/webhook', async function (req, res, next) {
   try {
-    const sig = req.headers['stripe-signature']
-        
+    const signature = req.headers['stripe-signature']
+    await main.validateBuy(req.rawBody, signature)
   } catch (e) {
+    logger.error(e)
     next(e)
   }
 })
-
-
 
