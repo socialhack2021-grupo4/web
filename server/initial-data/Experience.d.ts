@@ -8,6 +8,7 @@ declare namespace RetoPlusOne {
         description: string,
         pic_url: string
         currency: string,
-        price: number
+        price: number,
+        is_bought: boolean
     }
 }

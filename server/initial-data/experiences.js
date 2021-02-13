@@ -10,11 +10,13 @@ module.exports = [
     stripeId: null,
     host: {
       id: 1,
+      name: 'Ibai',
       profile_pic: 'http://',
       instagram: 'http://'
     },
     ngo: {
       id: 1,
+      name: 'Médicos sin fronteras',
       icon: 'http',
       url: 'http'
     },

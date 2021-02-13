@@ -10,7 +10,6 @@ const experiencesDB = new Keyv()
 const usersDb = new Keyv()
 const mainDB = new Keyv()
 
-
 async function setup () {
   for (const experience of experiences) {
     const stripeProduct = await stripe.createExperience(experience)
@@ -54,6 +53,24 @@ async function getExperience (userId, id) {
   return experience
 }
 
+/**
+ *
+ * @param userId
+ * @param id
+ * @returns {Promise<Stripe.Session>}
+ */
+async function startBuy (userId, id) {
+  const experience = await getExperience(userId, id)
+  if (experience.is_bought) {
+    const err = new Error('Experience already bought')
+    err.http_code = 400
+    throw err
+  }
+
+  const stripeSession = await stripe.requestBuy(experience)
+  return stripeSession
+}
+
 async function buyExperience (userId, id) {
   const experience = await getExperience(userId, id)
   if (experience.is_bought) {
@@ -63,11 +80,15 @@ async function buyExperience (userId, id) {
   }
 }
 
+async function confirmBuy (event, signature) {
+  stripe.confirmBuy
+}
 
 module.exports = {
   setup,
   getExperiencies,
   getExperience,
-  buyExperience
+  buyExperience,
+  startBuy
 }
 
