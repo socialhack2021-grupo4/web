@@ -1,12 +1,3 @@
-import { library } from '@fortawesome/fontawesome-svg-core';
-import {
-  faChevronLeft,
-  faSearch,
-  faFilter,
-  faTimesCircle,
-} from '@fortawesome/free-solid-svg-icons';
-library.add(faChevronLeft, faSearch, faFilter, faTimesCircle);
-
 import { createApp } from 'vue';
 import { createRouter, createWebHashHistory } from 'vue-router';
 import { createI18n } from 'vue-i18n';

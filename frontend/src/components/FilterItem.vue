@@ -8,7 +8,7 @@
     }"
     @click="$emit('click', $event)"
   >
-    <FontAwesomeIcon v-if="prefixIcon" class="" :icon="prefixIcon" />
+    <FontAwesomeIcon v-if="prefixIcon" fixed-width :icon="prefixIcon" />
 
     {{ label }}
 
@@ -27,6 +27,7 @@
     <template v-if="isSuffixIconDisplayed">
       <FontAwesomeIcon
         class="absolute transition-opacity top-1/2 -mt-2 right-3"
+        fixed-width
         :icon="faFilter"
         :class="{
           'opacity-0': !isActive,
@@ -37,6 +38,7 @@
       />
       <FontAwesomeIcon
         class="absolute transition-opacity top-1/2 -mt-2 right-3 opacity-0"
+        fixed-width
         :icon="faTimesCircle"
         :class="{
           'group-hover:opacity-100': isActive,

@@ -7,7 +7,12 @@
         :prefixIcon="faChevronLeft"
         @click="removeAllFilters()"
       />
-      <FilterItem v-else :label="$t('filter.noActiveFilters')" />
+      <FilterItem
+        v-else
+        class="text-pink-400 bg-pink-100"
+        :label="$t('filter.noActiveFilters')"
+        :prefixIcon="faHome"
+      />
 
       <div v-if="ngos.length" class="w-px h-6 ml-4 bg-gray-200" />
 
@@ -42,7 +47,7 @@
 import { defineComponent, computed, toRefs } from 'vue';
 import { useStore } from 'vuex';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
-import { faChevronLeft } from '@fortawesome/free-solid-svg-icons';
+import { faChevronLeft, faHome } from '@fortawesome/free-solid-svg-icons';
 
 import { Host, Ngo } from '../models';
 import { key, Mutation } from '../store';
@@ -89,6 +94,7 @@ export default defineComponent({
 
     return {
       faChevronLeft,
+      faHome,
       hosts,
       ngos,
       isSomeFilterActive,
