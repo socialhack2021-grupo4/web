@@ -1,5 +1,5 @@
 <template>
-  <nav class="flex flex-row flex-wrap justify-start items-center max-w-7xl mx-auto px-4 py-6">
+  <nav class="flex flex-row flex-wrap justify-start items-center max-w-7xl mx-auto px-4 pt-6">
     <FilterItem
       v-if="isSomeFilterActive"
       :label="t('filter.actions.removeAllFilters')"
@@ -13,7 +13,7 @@
       :prefixIcon="faHome"
     />
 
-    <div v-if="ngos.length" class="w-px h-6 ml-4 bg-gray-200" />
+    <div v-if="ngos.length" class="w-px h-6 ml-4 mb-6 bg-gray-200" />
 
     <FilterItem
       v-for="ngo of ngos"
@@ -26,7 +26,7 @@
       @click="toggleNgoFilter(ngo)"
     />
 
-    <div v-if="hosts.length" class="w-px h-6 ml-4 bg-gray-200" />
+    <div v-if="hosts.length" class="w-px h-6 ml-4 mb-6 bg-gray-200" />
 
     <FilterItem
       v-for="host of hosts"
