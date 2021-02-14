@@ -47,6 +47,47 @@ module.exports = [
     price: 500 // 12,34
   },
   {
+    id: 4,
+    stripeId: null,
+    host: {
+      id: 4,
+      name: 'El Rubius',
+      profile_pic: 'https://static3.elcomercio.es/www/multimedia/202101/18/media/cortadas/rubius-andorra-polemica-impuestos-ibai-llanos-k79C-U13025706315123C-624x385@El%20Comercio.jpg',
+      instagram: null
+    },
+    ngo: {
+      id: 4,
+      name: 'Cáritas',
+      icon: 'https://www.caritas.es/ibiza/ImagesRepository/8a92c1bf.jpg',
+      url: 'https://www.caritas.es/'
+    },
+    title: 'Esquía conmigo en Andorra',
+    description: 'Vente a ',
+    // To be shown on the detail
+    full_description: _.repeat('Loren ipsum', 40),
+    pic_thumbnail_url: 'http://',
+    pic_url: 'https://i.guim.co.uk/img/media/40d62051394665489d89a3db4a082ce24b932f9f/0_212_5076_3045/master/5076.jpg?width=1200&height=900&quality=85&auto=format&fit=crop&s=a55a3f6de500c28c063ba4073bdc376e',
+    // For the carousel
+    pics: [{
+      url: 'http://',
+      is_video: true
+    },
+      {
+        url: 'http://',
+        is_video: false
+      }
+    ],
+    is_bought: null, // Depends on user
+    starred: true,
+    n_participants: 5,
+    priority: 1, // low 0 < priority < 1 top
+    date_start: '2020-10-10 10:10',
+    date_end: '2021-02-13 10:10',
+    date_at: '2021-12-10 10:10',
+    currency: 'eur',
+    price: 500 // 12,34
+  },
+  {
     id: 2,
     stripeId: null,
     host: {
@@ -80,7 +121,7 @@ module.exports = [
     }
     ],
     is_bought: null, // Depends on user
-    starred: false,
+    starred: true,
     n_participants: 2000,
     priority: 0.8, // low 0 < priority < 1 top
     date_start: '2020-10-10 10:10',
@@ -128,48 +169,7 @@ module.exports = [
     date_end: '2021-10-10 10:10',
     date_at: '2021-12-10 10:10',
     currency: 'eur',
-    price: 1344 // 12,34
-  },
-  {
-    id: 4,
-    stripeId: null,
-    host: {
-      id: 4,
-      name: 'El Rubius',
-      profile_pic: 'https://static3.elcomercio.es/www/multimedia/202101/18/media/cortadas/rubius-andorra-polemica-impuestos-ibai-llanos-k79C-U13025706315123C-624x385@El%20Comercio.jpg',
-      instagram: null
-    },
-    ngo: {
-      id: 4,
-      name: 'Cáritas',
-      icon: 'https://www.caritas.es/ibiza/ImagesRepository/8a92c1bf.jpg',
-      url: 'https://www.caritas.es/'
-    },
-    title: 'Esquía conmigo en Andorra',
-    description: 'Vente a ',
-    // To be shown on the detail
-    full_description: _.repeat('Loren ipsum', 40),
-    pic_thumbnail_url: 'http://',
-    pic_url: 'https://i.guim.co.uk/img/media/40d62051394665489d89a3db4a082ce24b932f9f/0_212_5076_3045/master/5076.jpg?width=1200&height=900&quality=85&auto=format&fit=crop&s=a55a3f6de500c28c063ba4073bdc376e',
-    // For the carousel
-    pics: [{
-      url: 'http://',
-      is_video: true
-    },
-    {
-      url: 'http://',
-      is_video: false
-    }
-    ],
-    is_bought: null, // Depends on user
-    starred: true,
-    n_participants: 5,
-    priority: 0.8, // low 0 < priority < 1 top
-    date_start: '2020-10-10 10:10',
-    date_end: '2021-02-20 10:10',
-    date_at: '2021-12-10 10:10',
-    currency: 'eur',
-    price: 1344 // 12,34
+    price: 500 // 12,34
   },
   {
     id: 5,
@@ -210,7 +210,7 @@ module.exports = [
     date_end: '2021-10-10 10:10',
     date_at: '2021-12-10 10:10',
     currency: 'eur',
-    price: 1344 // 12,34
+    price: 500 // 12,34
   },
   {
     id: 6,
@@ -251,7 +251,7 @@ module.exports = [
     date_end: '2021-02-14 10:10',
     date_at: '2021-12-10 10:10',
     currency: 'eur',
-    price: 1344 // 12,34
+    price: 500 // 12,34
   },
   {
     id: 7,
@@ -285,14 +285,14 @@ module.exports = [
     }
     ],
     is_bought: null, // Depends on user
-    starred: false,
+    starred: true,
     n_participants: 5,
     priority: 0.8, // low 0 < priority < 1 top
     date_start: '2020-10-10 10:10',
     date_end: '2021-10-10 10:10',
     date_at: '2021-12-10 10:10',
     currency: 'eur',
-    price: 1344 // 12,34
+    price: 500 // 12,34
   },
   {
     id: 8,
@@ -333,7 +333,7 @@ module.exports = [
     date_end: '2021-10-10 10:10',
     date_at: '2021-12-10 10:10',
     currency: 'eur',
-    price: 1344 // 12,34
+    price: 800 // 12,34
   },
   {
     id: 9,
@@ -374,7 +374,7 @@ module.exports = [
     date_end: '2021-10-10 10:10',
     date_at: '2021-12-10 10:10',
     currency: 'eur',
-    price: 1344 // 12,34
+    price: 500 // 12,34
   },
   {
     id: 10,
@@ -412,9 +412,9 @@ module.exports = [
     n_participants: 5,
     priority: 0.8, // low 0 < priority < 1 top
     date_start: '2020-10-10 10:10',
-    date_end: '2021-10-10 10:10',
+    date_end: '2021-02-14 10:10',
     date_at: '2021-12-10 10:10',
     currency: 'eur',
-    price: 1344 // 12,34
+    price: 200 // 12,34
   }
 ]
