@@ -64,7 +64,7 @@ module.exports = [
     title: 'Ven a la Resistencia de invitado',
     description: 'Vente a ',
     // To be shown on the detail
-    full_description: _.repeat('Loren ipsum', 40),
+    full_description: '🔴 SE BUSCA ENTREVISTA A FAMOSO/A <br><br> Importante que sea bien 𝐅𝐀𝐌𝐎𝐒𝐎/𝐀. Que tenga los índices de celebrity MUY ALTOS 🙏',
     pic_thumbnail_url: 'http://',
     pic_url: 'https://i.ytimg.com/vi/GKgDTSLiONA/sddefault.jpg#404_is_fine',
     // For the carousel
@@ -271,7 +271,7 @@ module.exports = [
     // To be shown on the detail
     full_description: _.repeat('Loren ipsum', 40),
     pic_thumbnail_url: 'http://',
-    pic_url: 'https://images-na.ssl-images-amazon.com/images/I/71SJoowWjZL._SL1500_.jpg',
+    pic_url: 'https://sellosgoma.com/blog/wp-content/uploads/2017/09/Blog3_2-700x250.jpg',
     // For the carousel
     pics: [{
       url: 'http://',
@@ -312,7 +312,7 @@ module.exports = [
     // To be shown on the detail
     full_description: _.repeat('Loren ipsum', 40),
     pic_thumbnail_url: 'http://',
-    pic_url: 'https://images-na.ssl-images-amazon.com/images/I/71SJoowWjZL._SL1500_.jpg',
+    pic_url: 'https://sevillabuenasnoticias.com/wp-content/uploads/2019/06/AGNYEE-el-pros-velero-vuelta-al-mundo.jpg',
     // For the carousel
     pics: [{
       url: 'http://',
@@ -353,7 +353,7 @@ module.exports = [
     // To be shown on the detail
     full_description: _.repeat('Loren ipsum', 40),
     pic_thumbnail_url: 'http://',
-    pic_url: 'https://images-na.ssl-images-amazon.com/images/I/71SJoowWjZL._SL1500_.jpg',
+    pic_url: 'https://media.quincemil.com/imagenes/2020/10/30192937/dreamstime_xxl_133585669-copia-1-640x360.jpg',
     // For the carousel
     pics: [{
       url: 'http://',
@@ -385,7 +385,7 @@ module.exports = [
     },
     ngo: {
       id: 10,
-      name: 'Fundación Menela',
+      name: 'Arela',
       icon: 'https://www.arela.org/templates/arela2012/images/logo_portada_new.png',
       url: 'https://www.arela.org//'
     },
@@ -394,7 +394,7 @@ module.exports = [
     // To be shown on the detail
     full_description: _.repeat('Loren ipsum', 40),
     pic_thumbnail_url: 'http://',
-    pic_url: 'https://images-na.ssl-images-amazon.com/images/I/71SJoowWjZL._SL1500_.jpg',
+    pic_url: 'https://staticuestudio.blob.core.windows.net/buhomag/2017/01/17114427/jugar-al-mus.jpg',
     // For the carousel
     pics: [{
       url: 'http://',
