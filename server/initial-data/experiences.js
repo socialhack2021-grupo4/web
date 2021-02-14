@@ -125,7 +125,7 @@ module.exports = [
     n_participants: 2000,
     priority: 0.8, // low 0 < priority < 1 top
     date_start: '2020-10-10 10:10',
-    date_end: '2021-10-10 10:10',
+    date_end: '2021-05-05 10:10',
     date_at: '2021-12-10 10:10',
     currency: 'eur',
     price: 600 // 12,34
@@ -207,7 +207,7 @@ module.exports = [
     n_participants: 5,
     priority: 0.8, // low 0 < priority < 1 top
     date_start: '2020-10-10 10:10',
-    date_end: '2021-10-10 10:10',
+    date_end: '2021-05-15 10:10',
     date_at: '2021-12-10 10:10',
     currency: 'eur',
     price: 500 // 12,34
@@ -289,7 +289,7 @@ module.exports = [
     n_participants: 5,
     priority: 0.8, // low 0 < priority < 1 top
     date_start: '2020-10-10 10:10',
-    date_end: '2021-10-10 10:10',
+    date_end: '2021-03-20 10:10',
     date_at: '2021-12-10 10:10',
     currency: 'eur',
     price: 500 // 12,34
@@ -330,7 +330,7 @@ module.exports = [
     n_participants: 5,
     priority: 0.8, // low 0 < priority < 1 top
     date_start: '2020-10-10 10:10',
-    date_end: '2021-10-10 10:10',
+    date_end: '2021-04-30 10:10',
     date_at: '2021-12-10 10:10',
     currency: 'eur',
     price: 800 // 12,34
