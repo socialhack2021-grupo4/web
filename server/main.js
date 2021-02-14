@@ -39,6 +39,8 @@ async function getExperiencies (userId) {
     const experience = await experiencesDB.get(id)
     if (boughtExperiences[experience.id]) {
       experience.is_bought = true
+    } else {
+      experience.is_bought = false
     }
     experiences.push(experience)
   }
