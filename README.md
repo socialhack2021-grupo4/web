@@ -12,10 +12,13 @@ Celebrities offer first-hand experiences and all the profits go to NGOs.
 There's a **live demo** at [retomasuno.furstenheim.com](http://retomasuno.furstenheim.com/).
 
 Use `4242 4242 4242 4242` as credit card number to pay.
+pi
 
 ## Recorded demo
 
 Do you prefer a <60 seconds demo? [Here you go](https://drive.google.com/file/d/1o6HiVdp7ZfiJx_13GDhM_6hbpdeQnwDi/view).
+
+[![Demo thumbnail](./.github/demo-thumbnail.png)](https://drive.google.com/file/d/1o6HiVdp7ZfiJx_13GDhM_6hbpdeQnwDi/view)
 
 ## Running the app
 
