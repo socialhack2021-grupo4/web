@@ -44,9 +44,36 @@
         </div>
         <div class="flex flex-col w-96 flex-grow-0 flex-shrink-0 py-4 px-6">
           <button
-            class="ring ring-pink-200 hover:bg-pink-50 ring-1 rounded py-2 focus:outline-none"
+            class="relative transition-colors ring ring-1 rounded py-2 focus:outline-none"
+            :class="{
+              'ring-pink-200': !isLoading,
+              'hover:bg-pink-50': !isLoading,
+              'ring-gray-200': isLoading,
+              'bg-gray-200': isLoading,
+              'text-gray-600': isLoading,
+              'cursor-wait ': isLoading,
+              'focus:outline-none': isLoading,
+            }"
+            @click="purchase()"
           >
-            {{ t('experience.buy.cta') }}
+            <div
+              class="transition-opacity absolute inset-0 flex justify-center items-center"
+              :class="{
+                'opacity-0': !isLoading,
+                'opacity-100': isLoading,
+              }"
+            >
+              <FontAwesomeIcon :icon="faCircleNotch" fixedwidth spin />
+            </div>
+            <span
+              class="transition-opacity"
+              :class="{
+                'opacity-0': isLoading,
+                'opacity-100': !isLoading,
+              }"
+            >
+              {{ t('experience.buy.cta') }}
+            </span>
           </button>
         </div>
       </nav>
@@ -87,20 +114,32 @@ import { defineComponent, computed } from 'vue';
 import { useStore } from 'vuex';
 import { useRoute } from 'vue-router';
 import { useI18n } from 'vue-i18n';
+import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
+import { faCircleNotch } from '@fortawesome/free-solid-svg-icons';
 
-import { key } from '../store';
+import { key, Action } from '../store';
 
 export default defineComponent({
+  components: {
+    FontAwesomeIcon,
+  },
   setup() {
     const store = useStore(key);
     const route = useRoute();
     const { t, d, n } = useI18n();
 
+    const purchase = () => {
+      store.dispatch(Action.createOrder, store.getters.experiencesById[route.params.id as string]);
+    };
+
     return {
       t,
       d,
       n,
+      faCircleNotch,
+      purchase,
       experience: computed(() => store.getters.experiencesById[route.params.id as string]),
+      isLoading: computed(() => store.state.order.isLoading),
     };
   },
 });

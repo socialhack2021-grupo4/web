@@ -1,5 +1,7 @@
 import { InjectionKey } from 'vue';
 import { createStore, Store } from 'vuex';
+
+import { getExperiences, createOrder, placeOrder } from './api';
 import {
   Experience,
   Host,
@@ -23,6 +25,15 @@ export interface State {
     hosts: Record<string, boolean>;
     ngos: Record<string, boolean>;
   };
+  order: {
+    isLoading: boolean;
+    sessionId: string | null;
+  };
+  user: {
+    id: string;
+    name: string;
+    profilePicUrl: string;
+  } | null;
 }
 
 export const key: InjectionKey<Store<State>> = Symbol();
@@ -36,6 +47,13 @@ export enum Mutation {
   enableNgoFilter = 'enableNgoFilter',
   disableNgoFilter = 'disableNgoFilter',
   removeAllFilters = 'removeAllFilters',
+  startOrder = 'startOrder',
+  cancelOrder = 'cancelOrder',
+  setOrderSessionId = 'setOrderSessionId',
+}
+
+export enum Action {
+  createOrder = 'createOrder',
 }
 
 const upsertHosts = (state: State, hosts: Array<ShallowHost>) => {
@@ -59,6 +77,15 @@ const store = createStore<State>({
       activeFilters: {
         hosts: {},
         ngos: {},
+      },
+      order: {
+        isLoading: false,
+        sessionId: null,
+      },
+      user: {
+        id: '1',
+        name: '',
+        profilePicUrl: '',
       },
     };
   },
@@ -110,6 +137,15 @@ const store = createStore<State>({
         hosts: {},
         ngos: {},
       };
+    },
+    [Mutation.startOrder](state) {
+      state.order.isLoading = true;
+    },
+    [Mutation.cancelOrder](state) {
+      state.order.isLoading = false;
+    },
+    [Mutation.setOrderSessionId](state, sessionId) {
+      state.order.sessionId = sessionId;
     },
   },
   getters: {
@@ -179,7 +215,7 @@ const store = createStore<State>({
       );
     },
     experiencesForYou(state, getters) {
-      return Object.values(getters.experiencesById)
+      return Object.values(getters.experiencesById as Record<string, Experience>)
         .filter(({ isStarred }) => isStarred)
         .filter(
           ({ host, ngo }) =>
@@ -190,8 +226,7 @@ const store = createStore<State>({
         .sort((lhs, rhs) => lhs.priority - rhs.priority);
     },
     experiencesEndingSoon(state, getters) {
-      console.log(getters.isSomeFilterActive);
-      return Object.values(getters.experiencesById)
+      return Object.values(getters.experiencesById as Record<string, Experience>)
         .filter(({ dateEnd }) => isSoon(dateEnd))
         .filter(
           ({ host, ngo }) =>
@@ -202,7 +237,7 @@ const store = createStore<State>({
         .sort((lhs, rhs) => lhs.priority - rhs.priority);
     },
     popularExperiences(state, getters) {
-      return Object.values(getters.experiencesById)
+      return Object.values(getters.experiencesById as Record<string, Experience>)
         .filter(
           ({ host, ngo }) =>
             !getters.isSomeFilterActive ||
@@ -210,6 +245,23 @@ const store = createStore<State>({
             state.activeFilters.ngos[ngo.id],
         )
         .sort((lhs, rhs) => lhs.priority - rhs.priority);
+    },
+  },
+  actions: {
+    async [Action.createOrder]({ commit, state }, experience: Experience) {
+      if (state.order.isLoading) {
+        return;
+      }
+
+      commit(Mutation.startOrder);
+
+      try {
+        const order = await createOrder(state.user.id, experience);
+        commit(Mutation.setOrderSessionId, order.sessionId);
+        await placeOrder(order);
+      } catch (error) {
+        commit(Mutation.cancelOrder);
+      }
     },
   },
 });

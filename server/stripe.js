@@ -34,18 +34,19 @@ async function createExperience (experience) {
  * @param {RetoPlusOne.Experience} experience
  * @returns {Promise<Stripe.Session>}
  */
-async function requestBuy (experience) {
+async function requestBuy(experience) {
   const session = await stripe.checkout.sessions.create({
     payment_method_types: ['card'],
-    line_items: [{
-      price: experience.stripeId,
-      quantity: 1
-    }],
+    line_items: [
+      {
+        price: experience.stripeId,
+        quantity: 1,
+      },
+    ],
     mode: 'payment',
-    success_url: `${constants.frontendUrl}/success?experience=${experience.id}`,
-    cancel_url: `${constants.frontendUrl}/cancel?experience=${experience.id}`
-  })
-  return session
+    success_url: `${constants.frontendUrl}/#/experience/${experience.id}/success`,
+    cancel_url: `${constants.frontendUrl}/#/experience/${experience.id}?cancel`,
+  });
 }
 
 /**

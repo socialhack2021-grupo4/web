@@ -1,10 +1,10 @@
-require('dotenv').config({ path: './test.env' })
-const PORT = 3001
+require('dotenv').config({ path: './test.env' });
+const PORT = 3001;
 module.exports = {
   PORT,
   experiencesKey: 'experiences',
   stripeApiKey: process.env.STRIPE_API_KEY,
   stripeWebhookKey: process.env.STRIPE_WEBHOOK_SECRET,
   url: `https://localhost:${PORT}`,
-  frontendUrl: 'https://localhost:3000'
-}
+  frontendUrl: 'http://localhost:3000',
+};
