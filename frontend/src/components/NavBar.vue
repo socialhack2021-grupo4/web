@@ -1,7 +1,13 @@
 <template>
   <nav class="flex flex-row justify-between items-center max-w-7xl mx-auto px-4 py-6">
     <div class="flex justify-start">
-      <router-link :to="{ name: 'home' }">PROJECT_NAME</router-link>
+      <router-link class="flex flex-row items-center" :to="{ name: 'home' }">
+        <div class="w-6 h-6 mr-2 mb-1">
+          <img src="/logo.png" :alt="t('logoAlt')" />
+        </div>
+
+        <span class="font-semibold text-xl">#Reto +1</span>
+      </router-link>
     </div>
 
     <div class="flex justify-start">
@@ -22,16 +28,24 @@
     </div>
 
     <div class="flex justify-end">
-      <router-link to="/">{{ t('login.cta') }}</router-link>
+      <div v-if="user">
+        <div class="w-9 h-9">
+          <img class="rounded-full" src="/avatar.jpg" />
+        </div>
+      </div>
+      <router-link v-else to="/">{{ t('login.cta') }}</router-link>
     </div>
   </nav>
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue';
+import { defineComponent, computed } from 'vue';
+import { useStore } from 'vuex';
 import { useI18n } from 'vue-i18n';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
+
+import { key } from '../store';
 
 export default defineComponent({
   components: {
@@ -39,10 +53,14 @@ export default defineComponent({
   },
   setup() {
     const { t } = useI18n();
+    const store = useStore(key);
+
+    const user = computed(() => store.state.user);
 
     return {
       t,
       faSearch,
+      user,
     };
   },
 });

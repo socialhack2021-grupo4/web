@@ -1,5 +1,6 @@
 export const messages = {
   es: {
+    logoAlt: 'Logo de #Reto +1',
     login: {
       cta: 'Inicia sesión',
     },
