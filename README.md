@@ -7,6 +7,14 @@ This is Hackathon project for Minube Social Hack 2021.
 It's a platform to engage celebrities and commoners for a common cause.
 Celebrities offer first-hand experiences and all the profits go to NGOs.
 
+There's more info about the project in [this presentation](https://drive.google.com/file/d/1JlxdN1R6ls7hf1aNGGMaJXNWqbDETMb0/view).
+
+## Who are we
+
+- Lluís Ulzurrun de Asanza i Sàez
+- Gabriel Furstenheim
+- Marcelo Rodríguez Teijeiro
+
 ## Live demo
 
 There's a **live demo** at [retomasuno.furstenheim.com](http://retomasuno.furstenheim.com/).
