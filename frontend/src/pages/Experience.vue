@@ -119,11 +119,16 @@ import { useI18n } from 'vue-i18n';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import { faCircleNotch } from '@fortawesome/free-solid-svg-icons';
 
-import { key, Action } from '../store';
+import store, { key, Action } from '../store';
 
 export default defineComponent({
   components: {
     FontAwesomeIcon,
+  },
+  beforeRouteEnter(to, from, next) {
+    store.dispatch(Action.fetchSingleExperience, to.params.id).then(() => {
+      next();
+    });
   },
   setup() {
     const store = useStore(key);

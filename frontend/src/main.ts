@@ -44,5 +44,3 @@ app.use(router);
 app.use(i18n);
 app.use(store, key);
 app.mount('#app');
-
-store.dispatch(Action.fetchAllExperiences);

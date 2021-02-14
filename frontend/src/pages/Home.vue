@@ -20,12 +20,17 @@ import { useI18n } from 'vue-i18n';
 
 import FilterBar from '../components/FilterBar.vue';
 import CategorySection from '../components/CategorySection.vue';
-import { key } from '../store';
+import store, { key, Action } from '../store';
 
 export default defineComponent({
   components: {
     FilterBar,
     CategorySection,
+  },
+  beforeRouteEnter(to, from, next) {
+    store.dispatch(Action.fetchAllExperiences).then(() => {
+      next();
+    });
   },
   setup() {
     const store = useStore(key);

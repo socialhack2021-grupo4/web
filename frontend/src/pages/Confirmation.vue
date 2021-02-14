@@ -31,11 +31,16 @@ import { useRoute } from 'vue-router';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import { faChevronLeft } from '@fortawesome/free-solid-svg-icons';
 
-import { key } from '../store';
+import store, { key, Action } from '../store';
 
 export default defineComponent({
   components: {
     FontAwesomeIcon,
+  },
+  beforeRouteEnter(to, from, next) {
+    store.dispatch(Action.fetchSingleExperience, to.params.id).then(() => {
+      next();
+    });
   },
   setup() {
     const store = useStore(key);
