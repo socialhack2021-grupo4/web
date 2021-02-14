@@ -41,7 +41,7 @@ module.exports = [
     n_participants: 10,
     priority: 0.8, // low 0 < priority < 1 top
     date_start: '2020-10-10 10:10',
-    date_end: '2021-10-10 10:10',
+    date_end: '2021-03-03 10:10',
     date_at: '2021-12-10 10:10',
     currency: 'eur',
     price: 500 // 12,34
@@ -164,7 +164,7 @@ module.exports = [
     n_participants: 5,
     priority: 0.8, // low 0 < priority < 1 top
     date_start: '2020-10-10 10:10',
-    date_end: '2021-10-10 10:10',
+    date_end: '2021-02-20 10:10',
     date_at: '2021-12-10 10:10',
     currency: 'eur',
     price: 1344 // 12,34
@@ -173,7 +173,7 @@ module.exports = [
     id: 5,
     stripeId: null,
     host: {
-      id: 4,
+      id: 5,
       name: 'Bertín Osborne',
       profile_pic: 'https://okdiario.com/img/2019/05/21/bertin-osborne-se-sincera-655x368.jpg',
       instagram: null
@@ -214,7 +214,7 @@ module.exports = [
     id: 6,
     stripeId: null,
     host: {
-      id: 4,
+      id: 6,
       name: 'Dulceida',
       profile_pic: 'https://instagram.fmad16-1.fna.fbcdn.net/v/t51.2885-19/s150x150/72421535_677893275954133_1208687239719026688_n.jpg?_nc_ht=instagram.fmad16-1.fna.fbcdn.net&_nc_ohc=DBx0NetQCNwAX-V7dYQ&tp=1&oh=e391ca914aa07fd4c4014e70deb1c0c0&oe=6051B08E',
       instagram: null
@@ -246,7 +246,7 @@ module.exports = [
     n_participants: 5,
     priority: 0.8, // low 0 < priority < 1 top
     date_start: '2020-10-10 10:10',
-    date_end: '2021-10-10 10:10',
+    date_end: '2021-02-14 10:10',
     date_at: '2021-12-10 10:10',
     currency: 'eur',
     price: 1344 // 12,34
@@ -255,18 +255,18 @@ module.exports = [
     id: 7,
     stripeId: null,
     host: {
-      id: 4,
-      name: 'Dulceida',
-      profile_pic: 'https://instagram.fmad16-1.fna.fbcdn.net/v/t51.2885-19/s150x150/72421535_677893275954133_1208687239719026688_n.jpg?_nc_ht=instagram.fmad16-1.fna.fbcdn.net&_nc_ohc=DBx0NetQCNwAX-V7dYQ&tp=1&oh=e391ca914aa07fd4c4014e70deb1c0c0&oe=6051B08E',
+      id: 7,
+      name: 'Ester Expósito',
+      profile_pic: 'https://instagram.fmad16-1.fna.fbcdn.net/v/t51.2885-19/s150x150/150463737_425983045395402_2266951643320558496_n.jpg?_nc_ht=instagram.fmad16-1.fna.fbcdn.net&_nc_ohc=uqQqQkn-6LkAX-p6K51&tp=1&oh=370da9714eb6477347f80a7a43765ffc&oe=605191DB',
       instagram: null
     },
     ngo: {
       id: 7,
-      name: 'Ayuda en Acción',
-      icon: 'https://plataformadeinfancia.org/wp-content/uploads/2016/04/entidades-plataforma-de-infancia-logo-ayuda-en-accion-400x400.jpg',
-      url: 'https://ayudaenaccion.org/'
+      name: 'WWF',
+      icon: 'https://d1diae5goewto1.cloudfront.net/_skins/capetown/img/logo.png',
+      url: 'https://www.wwf.es//'
     },
-    title: 'Ven de fotos conmigo',
+    title: 'Noche de Pelis',
     description: 'Vente a ',
     // To be shown on the detail
     full_description: _.repeat('Loren ipsum', 40),
@@ -296,48 +296,7 @@ module.exports = [
     id: 8,
     stripeId: null,
     host: {
-      id: 4,
-      name: 'Ester Expósito',
-      profile_pic: 'https://instagram.fmad16-1.fna.fbcdn.net/v/t51.2885-19/s150x150/150463737_425983045395402_2266951643320558496_n.jpg?_nc_ht=instagram.fmad16-1.fna.fbcdn.net&_nc_ohc=uqQqQkn-6LkAX-p6K51&tp=1&oh=370da9714eb6477347f80a7a43765ffc&oe=605191DB',
-      instagram: null
-    },
-    ngo: {
       id: 8,
-      name: 'Ayuda en Acción',
-      icon: 'https://plataformadeinfancia.org/wp-content/uploads/2016/04/entidades-plataforma-de-infancia-logo-ayuda-en-accion-400x400.jpg',
-      url: 'https://ayudaenaccion.org/'
-    },
-    title: 'Noche de Pelis',
-    description: 'Vente a ',
-    // To be shown on the detail
-    full_description: _.repeat('Loren ipsum', 40),
-    pic_thumbnail_url: 'http://',
-    pic_url: 'https://images-na.ssl-images-amazon.com/images/I/71SJoowWjZL._SL1500_.jpg',
-    // For the carousel
-    pics: [{
-      url: 'http://',
-      is_video: true
-    },
-    {
-      url: 'http://',
-      is_video: false
-    }
-    ],
-    is_bought: null, // Depends on user
-    starred: false,
-    n_participants: 5,
-    priority: 0.8, // low 0 < priority < 1 top
-    date_start: '2020-10-10 10:10',
-    date_end: '2021-10-10 10:10',
-    date_at: '2021-12-10 10:10',
-    currency: 'eur',
-    price: 1344 // 12,34
-  },
-  {
-    id: 9,
-    stripeId: null,
-    host: {
-      id: 4,
       name: 'Amancio Ortega',
       profile_pic: 'https://thumbor.forbes.com/thumbor/fit-in/416x416/filters%3Aformat%28jpg%29/https%3A%2F%2Fspecials-images.forbesimg.com%2Fimageserve%2F5c76b94131358e35dd27748e%2F0x0.jpg%3Fbackground%3D000000%26cropX1%3D179%26cropX2%3D2232%26cropY1%3D216%26cropY2%3D2269',
       instagram: null
@@ -375,10 +334,10 @@ module.exports = [
     price: 1344 // 12,34
   },
   {
-    id: 10,
+    id: 9,
     stripeId: null,
     host: {
-      id: 4,
+      id: 9,
       name: 'Abel Caballero',
       profile_pic: 'https://4.bp.blogspot.com/-04-ZCClcWIY/WzrChFN7AoI/AAAAAAABkFM/V-XYTq-mlcwzIi6UwqRpqry9XxL0Gyf4ACLcBGAs/s1600/Abel%2BCaballero%2BCelta.jpg',
       instagram: null
@@ -416,16 +375,16 @@ module.exports = [
     price: 1344 // 12,34
   },
   {
-    id: 11,
+    id: 10,
     stripeId: null,
     host: {
-      id: 4,
+      id: 10,
       name: 'Pedro Alonso',
       profile_pic: 'https://upload.wikimedia.org/wikipedia/commons/3/30/Pedro_Alonso.jpg',
       instagram: null
     },
     ngo: {
-      id: 9,
+      id: 10,
       name: 'Fundación Menela',
       icon: 'https://www.arela.org/templates/arela2012/images/logo_portada_new.png',
       url: 'https://www.arela.org//'
@@ -456,5 +415,4 @@ module.exports = [
     currency: 'eur',
     price: 1344 // 12,34
   }
-
 ]
