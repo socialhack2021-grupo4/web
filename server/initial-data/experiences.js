@@ -20,7 +20,7 @@ module.exports = [
       icon: 'https://pbs.twimg.com/profile_images/855142032066695173/GGdhnJvg_400x400.jpg',
       url: 'https://www.msf.es/'
     },
-    title: 'Cenita en mi casa',
+    title: 'Cenita 🍣 en mi casa',
     description: 'Vente a ',
     // To be shown on the detail
     full_description: _.repeat('Loren ipsum', 40),
@@ -61,7 +61,7 @@ module.exports = [
       icon: 'https://www.caritas.es/ibiza/ImagesRepository/8a92c1bf.jpg',
       url: 'https://www.caritas.es/'
     },
-    title: 'Esquía conmigo en Andorra',
+    title: '⛷ Esquía conmigo en Andorra',
     description: 'Vente a ',
     // To be shown on the detail
     full_description: _.repeat('Loren ipsum', 40),
@@ -268,7 +268,7 @@ module.exports = [
       icon: 'https://d1diae5goewto1.cloudfront.net/_skins/capetown/img/logo.png',
       url: 'https://www.wwf.es//'
     },
-    title: 'Noche de Pelis',
+    title: 'Noche de Pelis 🍿',
     description: 'Vente a ',
     // To be shown on the detail
     full_description: _.repeat('Loren ipsum', 40),
@@ -309,7 +309,7 @@ module.exports = [
       icon: 'http://www.cogami.gal/iOApps/F048C26A-4796-43E0-AA1D-EAB0B7D08F3D/Themes/E2F6C6AF-5E51-42C4-81D4-DF71E1499700/assets/img/themes/logo-cogami.png',
       url: 'http://www.cogami.gal//'
     },
-    title: 'Vayamos a navegar',
+    title: 'Vayamos a navegar 🚢',
     description: 'Vente a ',
     // To be shown on the detail
     full_description: _.repeat('Loren ipsum', 40),
