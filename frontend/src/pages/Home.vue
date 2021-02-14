@@ -39,13 +39,6 @@ export default defineComponent({
     return {
       categories: computed(() => [
         {
-          id: 'popular',
-          name: t('categories.popular.name'),
-          experiences: store.getters.popularExperiences,
-          highlightFeaturedExperiences: true,
-          highlightEndingSoonExperiences: true,
-        },
-        {
           id: 'forYou',
           name: t('categories.forYou.name'),
           experiences: store.getters.experiencesForYou,
@@ -58,6 +51,13 @@ export default defineComponent({
           experiences: store.getters.experiencesEndingSoon,
           highlightFeaturedExperiences: true,
           highlightEndingSoonExperiences: false,
+        },
+        {
+          id: 'popular',
+          name: t('categories.popular.name'),
+          experiences: store.getters.popularExperiences,
+          highlightFeaturedExperiences: true,
+          highlightEndingSoonExperiences: true,
         },
       ]),
     };
