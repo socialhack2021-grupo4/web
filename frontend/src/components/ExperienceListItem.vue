@@ -1,6 +1,6 @@
 <template>
   <router-link
-    class="block box-border w-1/4 pt-6 px-8 pb-16 flex-shrink-0 scroll-snap-align-start"
+    class="block box-border w-1/4 pt-6 pl-10 pr-8 pb-16 flex-shrink-0 scroll-snap-align-start"
     :to="experiencePage"
   >
     <article
@@ -11,10 +11,10 @@
     >
       <div class="relative aspect-w-16 aspect-h-9">
         <picture>
-          <source :srcset="experience.thumbnailUrl" />
+          <source :srcset="experience.host.profilePicUrl" />
           <img
             class="absolute h-full w-full object-cover rounded-t-lg"
-            :src="experience.thumbnailUrl"
+            :src="experience.host.profilePicUrl"
             :alt="experience.title"
           />
         </picture>
