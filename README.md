@@ -1,45 +1,31 @@
-## Reto +1
+# Reto +1
 
-### What is this?
+## What is this?
 
-Hackathon project for minube social hack 2021
+This is Hackathon project for Minube Social Hack 2021.
 
-Platform to engage celebrities and commoners for a common cause. Celebrities offer first-hand experience and all benefits will go to NGOs.
+It's a platform to engage celebrities and commoners for a common cause.
+Celebrities offer first-hand experiences and all the profits go to NGOs.
 
-### Live
+## Live demo
 
-Visit http://retomasuno.furstenheim.com/
+There's a **live demo** at [retomasuno.furstenheim.com](http://retomasuno.furstenheim.com/).
 
-Use 4242 4242 4242 4242 as a credit card.
+Use `4242 4242 4242 4242` as credit card number to pay.
 
+## Recorded demo
 
-### How to execute
+Do you prefer a <60 seconds demo? [Here you go](https://drive.google.com/file/d/1o6HiVdp7ZfiJx_13GDhM_6hbpdeQnwDi/view).
 
-#### Server
+## Running the app
 
-```
-touch server/test.env
-```
+You have to start the frontend and the backend, to do so:
 
-```
-cd server && yarn && yarn watch
-```
+- **Frontend**: `yarn --cwd frontend && yarn --cwd frontend dev`. It listens on port `3000`.
+- **Backend**: `yarn --cwd server && yarn --cwd server watch`. It listens on port `3001`.
 
-Listens on localhost:3001
+If you want full Stripe integration you'll need the [Stripe CLI](https://github.com/stripe/stripe-cli). After it is installed you can forward webhooks to your local server using this snippet:
 
-#### Front
-
-```
-cd frontend && yarn && yarn dev
-```
-
-Listens on localhost:3000
-
-#### Install stripe cli 
-
-https://github.com/stripe/stripe-cli
-
-```
+```bash
 source server/test.env && stripe listen --forward-to localhost:3001/webhook --api-key $STRIPE_API_KEY
-``` 
-
+```
