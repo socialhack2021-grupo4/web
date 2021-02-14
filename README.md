@@ -10,6 +10,9 @@ Platform to engage celebrities and commoners for a common cause. Celebrities off
 
 Visit http://retomasuno.furstenheim.com/
 
+Use 4242 4242 4242 4242 as a credit card.
+
+
 ### How to execute
 
 #### Server
