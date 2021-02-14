@@ -1,6 +1,6 @@
 <template>
   <div
-    class="group relative transition rounded-full bg-gray-50 hover:bg-pink-100 px-3 py-2 cursor-pointer hover:text-pink-400 mb-6"
+    class="group relative transition rounded-full bg-gray-50 hover:bg-pink-100 px-3 py-2 cursor-pointer hover:text-pink-400 mb-6 flex-shrink-0 flex-grow-0 scroll-snap-align-start"
     :class="{
       'text-pink-400': isActive,
       'bg-pink-100': isActive,
