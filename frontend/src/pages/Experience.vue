@@ -45,15 +45,7 @@
         <div class="flex flex-col w-96 flex-grow-0 flex-shrink-0 py-4 px-6">
           <button
             class="relative transition-colors ring ring-1 rounded py-2 focus:outline-none"
-            :class="{
-              'ring-pink-200': !isLoading,
-              'hover:bg-pink-50': !isLoading,
-              'ring-gray-200': isLoading,
-              'bg-gray-200': isLoading,
-              'text-gray-600': isLoading,
-              'cursor-wait ': isLoading,
-              'focus:outline-none': isLoading,
-            }"
+            :class="purchaseButtonClasses"
             @click="purchase()"
           >
             <div
@@ -66,13 +58,23 @@
               <FontAwesomeIcon :icon="faCircleNotch" fixedwidth spin />
             </div>
             <span
-              class="transition-opacity"
+              class="transition-opacity flex flex-row items-center justify-center"
               :class="{
                 'opacity-0': isLoading,
                 'opacity-100': !isLoading,
               }"
             >
-              {{ t('experience.buy.cta') }}
+              <template v-if="experience.isBought">
+                <div class="w-4 h-4">
+                  <img src="/tada.gif" />
+                </div>
+                <span>
+                  {{ t('experience.buy.alreadyBought') }}
+                </span>
+              </template>
+              <template v-else>
+                {{ t('experience.buy.cta') }}
+              </template>
             </span>
           </button>
         </div>
@@ -132,14 +134,30 @@ export default defineComponent({
       store.dispatch(Action.createOrder, store.getters.experiencesById[route.params.id as string]);
     };
 
+    const experience = computed(() => store.getters.experiencesById[route.params.id as string]);
+    const isLoading = computed(() => store.state.order.isLoading);
+
+    const purchaseButtonClasses = computed(() => {
+      if (isLoading.value) {
+        return 'ring-gray-200 bg-gray-200 text-gray-600 cursor-wait focus:outline-none';
+      }
+
+      if (experience.value.isBought) {
+        return 'ring-pink-200 bg-pink-200 text-pink-600 cursor-not-allowed focus:outline-none';
+      }
+
+      return 'ring-pink-200 hover:bg-pink-50';
+    });
+
     return {
       t,
       d,
       n,
       faCircleNotch,
       purchase,
-      experience: computed(() => store.getters.experiencesById[route.params.id as string]),
-      isLoading: computed(() => store.state.order.isLoading),
+      purchaseButtonClasses,
+      experience,
+      isLoading,
     };
   },
 });

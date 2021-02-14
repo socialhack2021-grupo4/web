@@ -28,6 +28,7 @@ export const messages = {
       buyToHelp: 'Participando ayudarás donando {formattedPrice} a',
       buy: {
         cta: '¡Participa!',
+        alreadyBought: 'Ya has participado, ¡muchas gracias!',
       },
       endingSoon: {
         label: '¡Termina pronto!',
@@ -38,6 +39,11 @@ export const messages = {
       price: {
         startingFrom: 'Desde {formattedPrice}',
       },
+    },
+    confirmationPage: {
+      title: '¡Gracias!',
+      subtitle: 'Tu participación ayudará a {ngoName}, ¡muchas gracias! 💗',
+      backToExperience: 'Vuelve a «{experienceName}», con {hostName}',
     },
   },
 };
