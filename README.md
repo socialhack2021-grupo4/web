@@ -20,7 +20,6 @@ There's more info about the project in [this presentation](https://drive.google.
 There's a **live demo** at [retomasuno.furstenheim.com](http://retomasuno.furstenheim.com/).
 
 Use `4242 4242 4242 4242` as credit card number to pay.
-pi
 
 ## Recorded demo
 
