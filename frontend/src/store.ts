@@ -1,19 +1,19 @@
 import { InjectionKey } from 'vue';
 import { createStore, Store } from 'vuex';
 
-import { getExperiences, createOrder, placeOrder } from './api';
+import { getExperiences, createOrder, placeOrder, getExperienceById } from './api';
 import {
   Experience,
-  Host,
-  Ngo,
-  ShallowExperience,
-  ShallowHost,
-  ShallowNgo,
   getExperienceFromShallowExperience,
   getHostFromShallowHost,
   getNgoFromShallowNgo,
   getShallowExperienceFromExperience,
+  Host,
   isSoon,
+  Ngo,
+  ShallowExperience,
+  ShallowHost,
+  ShallowNgo,
 } from './models';
 import { groupBy } from './utils/collection';
 
@@ -54,6 +54,8 @@ export enum Mutation {
 
 export enum Action {
   createOrder = 'createOrder',
+  fetchSingleExperience = 'fetchSingleExperience',
+  fetchAllExperiences = 'fetchAllExperiences',
 }
 
 const upsertHosts = (state: State, hosts: Array<ShallowHost>) => {
@@ -262,6 +264,14 @@ const store = createStore<State>({
       } catch (error) {
         commit(Mutation.cancelOrder);
       }
+    },
+    async [Action.fetchAllExperiences]({ commit, state }) {
+      const experiences = await getExperiences(state.user.id);
+      commit(Mutation.upsertExperiences, experiences);
+    },
+    async [Action.fetchSingleExperience]({ commit, state }, experienceId: string) {
+      const experience = await getExperienceById(state.user.id, experienceId);
+      commit(Mutation.upsertExperiences, [experience]);
     },
   },
 });

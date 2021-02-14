@@ -1,6 +1,6 @@
 import { loadStripe } from '@stripe/stripe-js';
 
-import { Experience, Order } from './models';
+import { Experience, Order, getExperienceFromApiExperience } from './models';
 
 const apiEndpoint = 'http://localhost:3001/api';
 
@@ -15,7 +15,24 @@ export const getExperiences = async (userId: string): Promise<Array<Experience>>
 
   const experiences = await response.json();
 
-  return experiences.map((apiExperience) => apiExperience);
+  return experiences.map((apiExperience) => getExperienceFromApiExperience(apiExperience));
+};
+
+export const getExperienceById = async (
+  userId: string,
+  experienceId: string,
+): Promise<Experience> => {
+  const response = await window.fetch(`${apiEndpoint}/experience`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({ id: experienceId, userId }),
+  });
+
+  const apiExperience = await response.json();
+
+  return getExperienceFromApiExperience(apiExperience);
 };
 
 export const createOrder = async (userId: string, experience: Experience): Promise<Order> => {

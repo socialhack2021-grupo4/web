@@ -56,6 +56,41 @@ export const getHostFromShallowHost = ({
   isFilterActive,
 });
 
+export interface ApiExperience {
+  id: string;
+  stripeId: string;
+  host: {
+    id: string;
+    name: string;
+    profile_pic: string;
+    instagram: string | null;
+  };
+  ngo: {
+    id: string;
+    name: string;
+    icon: string;
+    url: string;
+  };
+  title: string;
+  description: string;
+  full_description: string;
+  pic_thumbnail_url: string;
+  pic_url: string;
+  pics: Array<{
+    url: string;
+    is_video: boolean;
+  }>;
+  is_bought: boolean;
+  starred: boolean;
+  n_participants: number;
+  priority: number;
+  date_start: string;
+  date_end: string;
+  date_at: string;
+  currency: string;
+  price: number;
+}
+
 export interface ShallowExperience {
   id: string;
   hostId: string;
@@ -83,6 +118,52 @@ export interface Experience extends Omit<ShallowExperience, 'hostId' | 'ngoId'> 
   host: ShallowHost;
   ngo: ShallowNgo;
 }
+
+const getDateFromApi = (apiDate: string): Date => {
+  const regex = /(\d{4})-(\d{2})-(\d{2}) (\d{2}):(\d{2})/;
+  const [, year, month, day, hours, minutes] = apiDate.match(regex);
+
+  return new Date(
+    parseInt(year),
+    parseInt(month) - 1,
+    parseInt(day),
+    parseInt(hours),
+    parseInt(minutes),
+  );
+};
+
+export const getExperienceFromApiExperience = (apiExperience: ApiExperience): Experience => ({
+  currency: apiExperience.currency,
+  dateAt: getDateFromApi(apiExperience.date_at),
+  dateEnd: getDateFromApi(apiExperience.date_end),
+  dateStart: getDateFromApi(apiExperience.date_start),
+  fullDescription: apiExperience.full_description,
+  host: {
+    id: apiExperience.host.id,
+    instagramUsername: apiExperience.host.instagram,
+    name: apiExperience.host.name,
+    profilePicUrl: apiExperience.host.profile_pic,
+  },
+  id: apiExperience.id,
+  images: apiExperience.pics.map((pic) => ({
+    url: pic.url,
+    isVideo: pic.is_video,
+  })),
+  isBought: apiExperience.is_bought,
+  isStarred: apiExperience.starred,
+  ngo: {
+    id: apiExperience.ngo.id,
+    logoUrl: apiExperience.ngo.icon,
+    name: apiExperience.ngo.name,
+    websiteUrl: apiExperience.ngo.url,
+  },
+  participantsCount: apiExperience.n_participants,
+  priceInCents: apiExperience.price,
+  priority: apiExperience.priority,
+  shortDescription: apiExperience.description,
+  thumbnailUrl: apiExperience.pic_url,
+  title: apiExperience.title,
+});
 
 export const getShallowExperienceFromExperience = (experience: Experience): ShallowExperience => ({
   currency: experience.currency,
