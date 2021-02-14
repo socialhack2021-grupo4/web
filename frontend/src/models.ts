@@ -213,7 +213,7 @@ export const getExperienceFromShallowExperience = ({
   ngo: shallowNgo,
 });
 
-export const isSoon = (date: Date) => date.getTime() - Date.now() < 24 * 60 * 60 * 1000;
+export const isSoon = (date: Date) => date.getTime() - Date.now() < 3 * 24 * 60 * 60 * 1000;
 
 export interface Order {
   sessionId: string;
