@@ -6,6 +6,10 @@ Hackathon project for minube social hack 2021
 
 Platform to engage celebrities and commoners for a common cause. Celebrities offer first-hand experience and all benefits will go to NGOs.
 
+### Live
+
+Visit http://retomasuno.furstenheim.com/
+
 ### How to execute
 
 #### Server
