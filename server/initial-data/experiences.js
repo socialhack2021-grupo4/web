@@ -64,7 +64,9 @@ module.exports = [
     title: 'Ven a la Resistencia de invitado',
     description: 'Vente a ',
     // To be shown on the detail
-    full_description: '🔴 SE BUSCA ENTREVISTA A FAMOSO/A <br><br> Importante que sea bien 𝐅𝐀𝐌𝐎𝐒𝐎/𝐀. Que tenga los índices de celebrity MUY ALTOS 🙏',
+    full_description: `
+ 🔴 SE BUSCA ENTREVISTA A FAMOSO/A <br><br>
+ Importante que sea bien 𝐅𝐀𝐌𝐎𝐒𝐎/𝐀. <br><br> Que tenga los índices de celebrity MUY ALTOS 🙏`,
     pic_thumbnail_url: 'http://',
     pic_url: 'https://i.ytimg.com/vi/GKgDTSLiONA/sddefault.jpg#404_is_fine',
     // For the carousel
@@ -79,13 +81,13 @@ module.exports = [
     ],
     is_bought: null, // Depends on user
     starred: false,
-    n_participants: 5,
+    n_participants: 2000,
     priority: 0.8, // low 0 < priority < 1 top
     date_start: '2020-10-10 10:10',
     date_end: '2021-10-10 10:10',
     date_at: '2021-12-10 10:10',
     currency: 'eur',
-    price: 1344 // 12,34
+    price: 600 // 12,34
   },
   {
     id: 3,
